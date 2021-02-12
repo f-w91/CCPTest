@@ -98,6 +98,13 @@ namespace CCP
             {
                 ExportFilePath = Path.Combine(path, fileName);
             }
+            else
+            {
+                Console.WriteLine("Enter a new path:");
+                var newPath = Console.ReadLine();
+
+                ExportFilePath = Path.Combine(newPath, fileName);
+            }
         }
 
         public void ChooseExportType()
@@ -107,6 +114,7 @@ namespace CCP
 
             while (!validChoice)
             {
+                Console.Clear();
                 Console.WriteLine($"Please select a file format to convert your {ImportType.ToString()} to:");
 
                 foreach(var type in AvailableTypes)
@@ -145,7 +153,7 @@ namespace CCP
                 Console.Clear();
                 Console.WriteLine("Welcome to Felix's magical technical test, we hope to take you on a journey where I obsess way too long over this.");
                 if (!firstPass)
-                    Console.WriteLine($"The file path '{previousFilePath}' was either incomplete, not found, or access was denied.");
+                    Console.WriteLine($"The file path '{previousFilePath}' was either incomplete, not found, not a valid type, or access was denied.");
                 firstPass = false;
                 Console.WriteLine("Please enter a filepath, including the extension of the file. Press enter when you are done.");
 
@@ -173,10 +181,13 @@ namespace CCP
                             break;
                     }
 
-                    if (Confirm($"This file looks to be a {extension} type. Proceed?"))
+                    if (ImportType != ImportType.None)
                     {
-                        ImportFilePath = filePath;
-                        return true;
+                        if (Confirm($"This file looks to be a {extension} type. Proceed?"))
+                        {
+                            ImportFilePath = filePath;
+                            return true;
+                        }
                     }
                 }
             }
@@ -184,6 +195,7 @@ namespace CCP
             return false;
         }
 
+        //Generic method to get yes/no results from simple decisions
         public static bool Confirm(string message)
         {
             Console.Clear();
@@ -204,6 +216,7 @@ namespace CCP
                 }
                 else
                 {
+                    Console.Clear();
                     Console.WriteLine("Invalid entry!");
                     Console.WriteLine($"{message} Y/N");
                 }
