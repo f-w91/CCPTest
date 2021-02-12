@@ -16,9 +16,8 @@ namespace CCP.Helpers
 
             if (File.Exists(importFilePath))
             {
-
+                //Read out our json into a new set for interrogation
                 var entries = JsonConvert.DeserializeObject<List<Dictionary<string, object>>>(File.ReadAllText(importFilePath));
-
 
                 foreach (var entry in entries)
                 {
@@ -41,6 +40,7 @@ namespace CCP.Helpers
                         }
                         else
                         {
+                            //Basic item, nothing fancy
                             CCPDataItem item = new CCPDataItem();
                             item.Name = field.Key;
                             item.Value = field.Value.ToString();
@@ -74,8 +74,8 @@ namespace CCP.Helpers
                         var group = splitted[0];
                         var groupedItem = splitted[1];
 
+                        //We're using ExpandoObjects since we can dynamically add properties as indexed entries, wrapping them as IDictionary types
                         IDictionary<string, object> child = new ExpandoObject();
-                        IDictionary<string, object> grouping = new ExpandoObject();
 
                         try
                         {
@@ -93,7 +93,6 @@ namespace CCP.Helpers
                     {
                         parent[subItem.Name] = subItem.Value;
                     }
-
 
                 }
 

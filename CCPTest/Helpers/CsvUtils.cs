@@ -15,8 +15,6 @@ namespace CCP.Helpers
             CCPDataSet set = new CCPDataSet();
             if (File.Exists(importFilePath))
             {
-
-                //List<List<CCPDataItem>> allItems = new List<List<CCPDataItem>>();
                 using (TextFieldParser parser = new TextFieldParser(importFilePath))
                 {
                     parser.SetDelimiters(new string[] { "," });
@@ -25,7 +23,6 @@ namespace CCP.Helpers
 
                     while (!parser.EndOfData)
                     {
-                        //List<CCPDataItem> items = new List<CCPDataItem>();
                         var row = new CCPDataRow();
                         string[] properties = parser.ReadFields();
                         int index = 0;
@@ -44,7 +41,6 @@ namespace CCP.Helpers
                         set.Rows.Add(row);
                     }
                 }
-
             }
 
             return set;
