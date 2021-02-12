@@ -9,7 +9,7 @@ using CCP.Helpers;
 namespace CCP
 {
     //Some comments
-    //Its a bit buggy
+    //Its a bit buggy, there's a few ways you can break it
     //It should take any csv and convert into any xml, json, vice versa
     //It can only go one layer deep... I think
     //I wish I had more time to finish this off but I think my missus is getting annoyed at me!

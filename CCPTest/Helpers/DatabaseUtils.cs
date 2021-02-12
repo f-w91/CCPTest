@@ -9,6 +9,7 @@ namespace CCP.Helpers
     {
         //FW - So, I dont have time to do any actual db stuff, but it'd be something like this...
         //It's doable, but I've only got so much time to kill!
+        //Using dapper would be the best way for dealing with dynamics
 
         //static void Read()
         //{
