@@ -12,6 +12,11 @@ Confirm the file will go to the same location
 
 Profit
 
-Known issues and what I've improve:
+Known issues and what I'd improve:
 
 Unrecognised file types
+Invalid paths can throw some issues
+
+The Utils are a bit tightly coupled
+
+Enjoyed working on it though!
